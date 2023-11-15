@@ -121,3 +121,22 @@ docker network disconnect bridge bdafca915166
  docker stop b95188d74cf6 72f354927f94 bdafca915166
  docker run -d --name thesql -e MYSQL_ROOT_PASSWORD=123123 -p 3306:3306 -v ~/docker/docker-volumes/mysql:/var/lib/mysql mysql
 ```
+
+Now open MySQL Workbench and try to login via making a new connection.
+
+> [!NOTE]
+> If error of access denied is poping up, remove volume part from command i.e. **-v ~/docker/docker-volumes/mysql:/var/lib/mysql**.
+
+> [!NOTE]
+> If port 3306 is being used by some process, follow below.
+
+1. Open Powershell as admin
+2. Write
+   ```
+   netstat -ano
+   ```
+3. Search for 3306 and note which PID is using that port.
+4. Kill that process
+   ```
+   taskkill /F /PID 5820
+   ```
