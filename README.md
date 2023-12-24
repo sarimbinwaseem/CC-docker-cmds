@@ -27,6 +27,8 @@ CONT=nginx-html;sudo docker stop $CONT; sudo docker remove $CONT
  docker exec -it 7b10b1e9e1ef bash
  docker compose up -d
 
+docker logs -f container-name
+
  docker start container-name
  docker stop container-name
  docker remove container-name
@@ -59,6 +61,40 @@ For Windows:
 ```
 docker run -d -p 8080:80 -v D:\docker\nginx:/usr/share/nginx/html --name nginx-html nginx
 ```
+
+# qBitTorrent
+
+We are going to use compose file for this. Copy and paste this in docker-compose.yaml file.
+Change <your path to a directory> to your folder path.
+
+```
+---
+version: "2.1"
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WEBUI_PORT=9091
+    volumes:
+      - <your path to a directory>/docker/qbittorrent-downloads:/downloads
+    ports:
+      - 9091:9091
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+```
+
+Now run this command in the same folder of this file or pass full path of the file.
+
+```
+docker compose up -d
+docker logs -f <container-name>
+```
+This log command will display temporary password for qbittorent's webUI. Use this password to login @ localhost:9091
 
  # BRIDGE NETWORK NGINX
  
