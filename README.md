@@ -190,4 +190,4 @@ docker run -d --name=flaskapp -p 80:5000 sarimbinwaseem/flaskapp:v0.2.2
 docker network connect giganet flaskapp
 ```
 
-Then go to localhost/5000
+Then go to localhost/home
