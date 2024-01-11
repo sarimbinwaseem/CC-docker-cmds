@@ -177,7 +177,7 @@ Now open MySQL Workbench and try to login via making a new connection.
    taskkill /F /PID 5820
    ```
 
-# Task 10
+# Random Task
 
 > [!WARNING]
 > DO NOT COPY.
