@@ -176,3 +176,18 @@ Now open MySQL Workbench and try to login via making a new connection.
    ```
    taskkill /F /PID 5820
    ```
+
+# Task 10
+
+> [!WARNING]
+> DO NOT COPY.
+
+```
+docker network create --driver=bridge --subnet=172.20.0.0/16 --ip-range=172.20.0.0/24 --gateway=172.20.0.1 giganet
+docker run -d -p 27017:27017 --name=themongodb mongo
+docker network connect giganet themongodb
+docker run -d --name=flaskapp -p 80:5000 sarimbinwaseem/flaskapp:v0.2.2
+docker network connect giganet flaskapp
+```
+
+Then go to localhost/5000
