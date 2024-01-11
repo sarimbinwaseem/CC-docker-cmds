@@ -1,3 +1,4 @@
+> Do give a STAR if you find it helpful.
 # CC-docker-cmds
 
 > [!NOTE]
